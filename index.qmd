@@ -1,0 +1,138 @@
+---
+title: Métodología - ROA Objetivo
+subtitle: Programación Lineal
+format: clean-revealjs
+execute: 
+  echo: true
+  output: true
+code-fold: false
+code-overflow: wrap
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Grupo Financiero Ficohsa 
+    affiliations: Data Science
+date: last-modified
+html: 
+  toc: true
+  code-fold: show
+---
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Planteamiento del Problema
+
+-   El rendimiento financiero del banco está directamente influenciado por el *Margen Neto de Interés (NIM)*, *Costo de Crédito (COC)*, *Costo de Fondos (COF)*, entre otros.
+
+-   El objetivo es optimizar estas variables para lograr un ROAA objetivo, en este caso, ese ROAA objetivo, garantizando rentabilidad sostenible.
+
+-   Además, se analiza la sensibilidad del COF (Costo de Fondos) y su impacto en la estrategia financiera.
+
+#### Objetivo del Análisis
+
+-   Encontrar la combinación óptima de NIM y COC para alcanzar el ROA objetivo del 1.5%.
+
+-   Sensibilizar el impacto del COF en el modelo financiero.
+
+-   Proveer herramientas de análisis para la toma de decisiones estratégicas sobre la rentabilidad del portafolio.
+:::
+
+::: {.column style="font-size:15px"}
+#### Formulación Matemática del Modelo
+
+El modelo de programación lineal utilizado es:
+
+**Función objetivo:**
+
+$$
+\min \{NIM + COC\}
+$$
+
+**Sujeto a:**
+
+$$
+NIM - COC = ROA_{objetivo} + COF
+$$
+
+$$
+3\%\leq NIM \leq 9\%
+$$
+
+$$
+0.5\% \leq COC \leq 3\% 
+$$
+
+Donde:
+
+-   $ROA_{objetivo} = 1.5\%$
+
+-   $COF$ es el costo de fondo promedio.
+:::
+:::::
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Matriz de resultados optimos NIM y COC
+
+![](img/fig1.png){width="400"}
+
+De estos resultados podemos observar lo siguiente:
+
+-   Si los niveles de COC aumentan, el NIM debe subir para compensar el costo de crédito y mantener la ROAA objetivo del 1.5%.
+
+-   Si el NIM no aumenta lo suficiente cuando el COC sube, la ROAA caera por debajo del Objetivo.
+
+-   Bajo las condiciones actuales, si el COC sube más allá del 3%, el NIM tendría que superar a 8.73% para mantener la ROAA objetivo.
+:::
+
+::: {.column style="font-size:15px"}
+#### Escenarios de Sensibilidad del COF
+
+Se analizarón dos escenarios del COF
+
+-   COF = 4.23%
+
+-   COF = 3.95
+
+Se obtuvieron los siguientes resultados comparativos:
+
+![](img/fig2.png){width="1856"}
+
+-   Note que si el COF baja de 4.23% 3.95%, el ***NIM requerido disminuye***, reduciendo la presión sobre la rentabilidad.
+
+-   Si el ***COF sube***, se necesita un NIM mayor para compensar el impacto en ROAA.
+:::
+:::::
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Comparativa Valores Reales 2024 vs Óptimos según escenarios COF
+
+![](img/fig3.png)
+
+**Interpretación:**
+
+-   El NIM en 2024 (5.48%) fue menor al óptimo requerido en ambos escenarios:\
+    - Para COF de 5.23%, el NIM óptimo seguún modelo sería 8.65%.\
+    - Para COF de 4.23%, el NIM óptimo según modelo sería 7.58%\
+    - Esto sugiere que con un menor COF, se requiere un NIM menor para alcanzar el ROAA objetivo.
+:::
+
+::: {.column style="font-size:15px"}
+-   El ROAA real (1.36%) fue menor al esperado (1.5%) en ambos escenarios, lo que confirma que: \
+    \
+    - Si el COF disminuyera, la presión sobre el NIM para mentener la rentabilidad sería menor. \
+    - Si el COF se mantiene alto, es crucial aumentar el NIM para alcanzar el ROAA objetivo.
+
+`Nota 1:` *El lector debe tener en cuenta que el COC de 1.85% es el COC real que se obtuvo a nivel banco en 2024.*
+
+`Nota 2:` Esta metodología funcionaria únicamente para el ejercicio de las combinaciones óptimas de estos indicadores a nivel banco. Para encontrar la Mezcla bancas eficiente, Mezcla producto: consumo, Mezcla sectores Empresas, ya sería utilizar otra metodología, como ser *Markowitz*, ya que se deben tener en cuenta otras variables como ser: probabilidad de default, LGD, capital en riesgo, etc.
+:::
+:::::
