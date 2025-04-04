@@ -155,7 +155,7 @@ Se obtuvieron los siguientes resultados comparativos:
 
 -   Nunca se alcanzo un $ROAA\geq 1.5%$ **de forma sostenida.**
 
--   En 202 se estuvo más cera (1.48%) , pero con un **COF historicamente bajo (3.10%).**
+-   En 2022 se estuvo más cera (1.48%) , pero con un **COF historicamente bajo (3.10%).**
 
 -   Cuando el COF subio en 2024 (5.30%), la ROAA **no superó el 1.36%** a pesar de un NIM más alto (5.48%).
 :::
