@@ -120,19 +120,46 @@ Se obtuvieron los siguientes resultados comparativos:
 **Interpretación:**
 
 -   El NIM en 2024 (5.48%) fue menor al óptimo requerido en ambos escenarios:\
-    - Para COF de 5.23%, el NIM óptimo seguún modelo sería 8.65%.\
-    - Para COF de 4.23%, el NIM óptimo según modelo sería 7.58%\
-    - Esto sugiere que con un menor COF, se requiere un NIM menor para alcanzar el ROAA objetivo.
+    -   Para COF de 5.23%, el NIM óptimo seguún modelo sería 8.65%.\
+    -   Para COF de 4.23%, el NIM óptimo según modelo sería 7.58%\
+    -   Esto sugiere que con un menor COF, se requiere un NIM menor para alcanzar el ROAA objetivo.
 :::
 
 ::: {.column style="font-size:15px"}
--   El ROAA real (1.36%) fue menor al esperado (1.5%) en ambos escenarios, lo que confirma que: \
+-   El ROAA real (1.36%) fue menor al esperado (1.5%) en ambos escenarios, lo que confirma que:\
     \
-    - Si el COF disminuyera, la presión sobre el NIM para mentener la rentabilidad sería menor. \
-    - Si el COF se mantiene alto, es crucial aumentar el NIM para alcanzar el ROAA objetivo.
+    -   Si el COF disminuyera, la presión sobre el NIM para mentener la rentabilidad sería menor.\
+    -   Si el COF se mantiene alto, es crucial aumentar el NIM para alcanzar el ROAA objetivo.
 
 `Nota 1:` *El lector debe tener en cuenta que el COC de 1.85% es el COC real que se obtuvo a nivel banco en 2024.*
 
 `Nota 2:` Esta metodología funcionaria únicamente para el ejercicio de las combinaciones óptimas de estos indicadores a nivel banco. Para encontrar la Mezcla bancas eficiente, Mezcla producto: consumo, Mezcla sectores Empresas, ya sería utilizar otra metodología, como ser *Markowitz*, ya que se deben tener en cuenta otras variables como ser: probabilidad de default, LGD, capital en riesgo, etc.
+:::
+:::::
+
+## Comportamiento Historico del Banco (2019-2024)
+
+::::: columns
+::: {.column style="font-size:15px"}
+
+| Año  | ROA   | NIM   | COC   | COF   |
+|------|-------|-------|-------|-------|
+| 2019 | 1.23% | 5.71% | 1.99% | 4.90% |
+| 2020 | 1.07% | 5.24% | 1.77% | 4.60% |
+| 2021 | 1.38% | 5.10% | 2.15% | 3.40% |
+| 2022 | 1.48% | 5.22% | 1.54% | 3.10% |
+| 2023 | 1.33% | 5.23% | 1.24% | 4.10% |
+| 2024 | 1.36% | 5.48% | 1.85% | 5.30% |
+
+#### Observaciones Claves
+
+-   Nunca se alcanzo un $ROAA\geq 1.5%$ **de forma sostenida.**
+
+-   En 202 se estuvo más cera (1.48%) , pero con un **COF historicamente bajo (3.10%).**
+
+-   Cuando el COF subio en 2024 (5.30%), la ROAA **no superó el 1.36%** a pesar de un NIM más alto (5.48%).
+:::
+
+::: {.column style="font-size:15px"}
 :::
 :::::
