@@ -1,0 +1,282 @@
+---
+title: Métodología - ROA Objetivo
+subtitle: Programación Lineal
+format: clean-revealjs
+execute: 
+  echo: true
+  output: true
+code-fold: false
+code-overflow: wrap
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Grupo Financiero Ficohsa 
+    affiliations: Data Science
+date: last-modified
+html: 
+  toc: true
+  code-fold: show
+---
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Planteamiento del Problema
+
+-   El rendimiento financiero del banco está directamente influenciado por el *Margen Neto de Interés (NIM)*, *Costo de Crédito (COC)*, *Costo de Fondos (COF)*, entre otros.
+
+-   El objetivo es optimizar estas variables para lograr un ROAA objetivo, en este caso, ese ROAA objetivo, garantizando rentabilidad sostenible.
+
+-   Además, se analiza la sensibilidad del COF (Costo de Fondos) y su impacto en la estrategia financiera.
+
+#### Objetivo del Análisis
+
+-   Encontrar la combinación óptima de NIM y COC para alcanzar el ROA objetivo del 1.5%.
+
+-   Sensibilizar el impacto del COF en el modelo financiero.
+
+-   Proveer herramientas de análisis para la toma de decisiones estratégicas sobre la rentabilidad del portafolio.
+:::
+
+::: {.column style="font-size:15px"}
+#### Formulación Matemática del Modelo
+
+El modelo de programación lineal utilizado es:
+
+**Función objetivo:**
+
+$$
+\min \{NIM + COC\}
+$$
+
+**Sujeto a:**
+
+$$
+NIM - COC = ROA_{objetivo} + COF
+$$
+
+$$
+3\%\leq NIM \leq 9\%
+$$
+
+$$
+0.5\% \leq COC \leq 3\% 
+$$
+
+Donde:
+
+-   $ROA_{objetivo} = 1.5\%$
+
+-   $COF$ es el costo de fondo promedio.
+:::
+:::::
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Matriz de resultados optimos NIM y COC
+
+![](img/fig1.png){width="400"}
+
+De estos resultados podemos observar lo siguiente:
+
+-   Si los niveles de COC aumentan, el NIM debe subir para compensar el costo de crédito y mantener la ROAA objetivo del 1.5%.
+
+-   Si el NIM no aumenta lo suficiente cuando el COC sube, la ROAA caera por debajo del Objetivo.
+
+-   Bajo las condiciones actuales, si el COC sube más allá del 3%, el NIM tendría que superar a 8.73% para mantener la ROAA objetivo.
+:::
+
+::: {.column style="font-size:15px"}
+#### Escenarios de Sensibilidad del COF
+
+Se analizarón dos escenarios del COF
+
+-   COF = 4.23%
+
+-   COF = 3.95
+
+Se obtuvieron los siguientes resultados comparativos:
+
+![](img/fig2.png){width="1856"}
+
+-   Note que si el COF baja de 4.23% 3.95%, el ***NIM requerido disminuye***, reduciendo la presión sobre la rentabilidad.
+
+-   Si el ***COF sube***, se necesita un NIM mayor para compensar el impacto en ROAA.
+:::
+:::::
+
+## Optimización de NIM y COC para Maximizar ROAA
+
+::::: columns
+::: {.column style="font-size:15px"}
+#### Comparativa Valores Reales 2024 vs Óptimos según escenarios COF
+
+![](img/fig3.png)
+
+**Interpretación:**
+
+-   El NIM en 2024 (5.48%) fue menor al óptimo requerido en ambos escenarios:\
+    -   Para COF de 5.23%, el NIM óptimo seguún modelo sería 8.65%.\
+    -   Para COF de 4.23%, el NIM óptimo según modelo sería 7.58%\
+    -   Esto sugiere que con un menor COF, se requiere un NIM menor para alcanzar el ROAA objetivo.
+:::
+
+::: {.column style="font-size:15px"}
+-   El ROAA real (1.36%) fue menor al esperado (1.5%) en ambos escenarios, lo que confirma que:\
+    \
+    -   Si el COF disminuyera, la presión sobre el NIM para mentener la rentabilidad sería menor.\
+    -   Si el COF se mantiene alto, es crucial aumentar el NIM para alcanzar el ROAA objetivo.
+
+`Nota 1:` *El lector debe tener en cuenta que el COC de 1.85% es el COC real que se obtuvo a nivel banco en 2024.*
+
+`Nota 2:` Esta metodología funcionaria únicamente para el ejercicio de las combinaciones óptimas de estos indicadores a nivel banco. Para encontrar la Mezcla bancas eficiente, Mezcla producto: consumo, Mezcla sectores Empresas, ya sería utilizar otra metodología, como ser *Markowitz*, ya que se deben tener en cuenta otras variables como ser: probabilidad de default, LGD, capital en riesgo, etc.
+:::
+:::::
+
+## Comportamiento Historico del Banco (2019-2024)
+
+::::: columns
+::: {.column style="font-size:15px"}
+| Año  | ROA   | NIM   | COC   | COF   |
+|------|-------|-------|-------|-------|
+| 2019 | 1.23% | 5.71% | 1.99% | 4.90% |
+| 2020 | 1.07% | 5.24% | 1.77% | 4.60% |
+| 2021 | 1.38% | 5.10% | 2.15% | 3.40% |
+| 2022 | 1.48% | 5.22% | 1.54% | 3.10% |
+| 2023 | 1.33% | 5.23% | 1.24% | 4.10% |
+| 2024 | 1.36% | 5.48% | 1.85% | 5.30% |
+
+#### Observaciones Claves
+
+-   Nunca se alcanzo un $ROAA\geq 1.5\%$ **de forma sostenida.**
+
+-   En 2022 se estuvo más cera (1.48%) , pero con un **COF historicamente bajo (3.10%).**
+
+-   Cuando el COF subio en 2024 (5.30%), la ROAA **no superó el 1.36%** a pesar de un NIM más alto (5.48%).
+
+Estos resultados historicos, evidencian que el comportamiento de la ROAA en la organización ha sido altamente sensible al COF.
+:::
+
+::: {.column style="font-size:15px"}
+![](img/indicadores_promedio_2024.png)
+
+#### Observaciones Claves:
+
+-   **Banca de personas** si bien tienen un NIM altísimo, también tiene el COC más alto.
+
+-   **La banca corporativa** es más conservadora, con bajo riesgo, pero también tiene la menor rentabilidad.
+
+Estos contrastes muestran que **la decisión de cómo componer el portafolio entre estas bancas no es trivial.** Y eso es precisamente lo que el modelo que presento resuelve: Encontrar la combinación óptima que permite alcanzar el ROA objetivo bajo restricciones realistas.
+:::
+:::::
+
+## Planteamiento Formal del modelo
+
+::::: columns
+::: {.column style="font-size:15px"}
+Definamos las bancas como Corporativa: $C$, Empresarial: $E$ y Personas: $P$. Entonces, tenemos:
+
+**Función objetivo**
+
+$$
+\max ROAA = NIM_{tot} - COC_{tot} - COF_{tot}
+$$
+
+**Sujeto a:**
+
+-   Restricción de suma de participaciones: $$w_C + w_E + w_P = 1$$
+
+-   Restricciones de acotación de indicadores: $$5\% \leq NIM_{tot} \leq 15\%$$ $$1\% \leq COC_{tot} \leq 6\%$$ $$ROAA \geq ROAA_{objetivo}$$
+
+Donde, el calculo de los indicadores totales esta dado por:\
+
+$$
+NIM_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot NIM_s
+$$
+
+$$
+COC_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot COC_s
+$$
+
+$$
+COF_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot COF_s
+$$
+:::
+
+::: {.column style="font-size:15px"}
+Los rangos de acotación de los indicadores no son arbitrarios: fueron definidos a partir del análisis estadístico de la serie historica mensual del banco del 2024.
+:::
+:::::
+
+## Resultados del Modelo Aplicado a 3 escenarios
+
+::::: columns
+::: {.column style="font-size:15px"}
+-   **Escenario 1 - COF 3.10%\
+    \
+    **![](img/escenario1.png){width="1800"}\
+    \
+    Con una composición actual del portafolio (Corporativa 53%, Empresarial 7% y Personas 40%), el modelo muestra que se logra alcanzar una $ROAA\geq 1.5\%$ en múltiples combinaciones de NIM y COC, validando que con costos de fondeo controlados el objetivo de rentabilidad es factible.
+
+-   **Escenario 2 - COF 4.5%\
+    \
+    **![](img/escenario2.png)
+:::
+
+::: {.column style="font-size:15px"}
+Bajo las mismas participaciones del portafolio, la rentabilidad se reduce notablemente. Aquí todavía existen combinaciones que superar el 1.5% de ROAA, estas se restringen a zonas con alto NIM y bajo COC. Esto muestra que el margen de maniobra se estrecha y requiere monitoreo más precesio.
+
+-   **Escenario 3 - COF 5.3%\
+    \
+    **![](img/escenario3.png){width="1700"}\
+    \
+    Con un fondeo elevado como el observado en 2024, el modelo indica que alcanzar 1.5% de ROAA es muy dificil con la composición actual del portafolio. Solo combinaciones muy exigentes de NIM y COC acotadas a la realidad del negocio lo permiten.
+:::
+:::::
+
+## Modelo optimización de la composición óptima del portafolio.
+
+::::: columns
+::: {.column style="font-size:15px"}
+A diferencia del modelo previamente planteado, este busca encontrar los pesos óptimos $(w_C, w_E, w_P)$ para las diferentes bancas, que permitan alcanzar exactamente una ROAA objetivo predeterminada.
+
+Función objetivo:
+
+$$
+\min_{w_C, w_E, w_P} |w_C\cdot ROAA_C + w_E\cdot ROAA_E + w_P\cdot ROAA_P - ROAA_{objetivo}|
+$$
+
+Sujeto a las siguientes restricciones:
+
+1.  $w_C + w_E + w_P = 1$
+
+2.  $ROAA_{tot} = w_C\cdot ROAA_{C} + w_E\cdot ROAA_{E} + w_P\cdot ROAA_P$ con $ROAA_{tot} \in [ROAA_{obj} - \epsilon, ROAA_{obj} + \epsilon]$.
+
+3.  $w_P \geq w_E + 1\%$
+
+4.  $w_C \geq 10\%, w_E\geq 10\%, w_P\geq 10\%$ 
+
+#### Resultados del modelo
+
+![](img/esc_opt.png){width="960"}
+:::
+
+::: {.column style="font-size:15px"}
+#### ¿Cuál tendría que ser el $NIM_{tot}, COC_{tot}, COF_{tot}$ con esta combinación óptima?
+
+-   $NIM_{tot} = 5.41\%$
+
+-   $COC_{tot} = 1.77\%$
+
+-   $COF_{tot} = 2.14\%$
+
+#### Conclusión: 
+
+\
+*Podemos alcanzar la rentabilidad deseada, pero solo si el costo de fondeo se mantiene controlado. Si el COF sube a niveles actuales (5.30%), esta combinación ya no es viable.*
+:::
+:::::
