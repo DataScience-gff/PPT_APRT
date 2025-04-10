@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Grupo Financiero Ficohsa">
-  <meta name="dcterms.date" content="2025-04-04">
+  <meta name="dcterms.date" content="2025-04-09">
   <title>Métodología - ROA Objetivo</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -341,7 +341,7 @@ Grupo Financiero Ficohsa
     </div>
 </div>
 
-  <p class="date">April 4, 2025</p>
+  <p class="date">April 9, 2025</p>
 </section>
 <section id="optimización-de-nim-y-coc-para-maximizar-roaa" class="slide level2">
 <h2>Optimización de NIM y COC para Maximizar ROAA</h2>
@@ -504,12 +504,103 @@ NIM - COC = ROA_{objetivo} + COF
 </table>
 <h4 id="observaciones-claves">Observaciones Claves</h4>
 <ul>
-<li><p>Nunca se alcanzo un <span class="math inline">\(ROAA\geq 1.5%\)</span> <strong>de forma sostenida.</strong></p></li>
+<li><p>Nunca se alcanzo un <span class="math inline">\(ROAA\geq 1.5\%\)</span> <strong>de forma sostenida.</strong></p></li>
 <li><p>En 2022 se estuvo más cera (1.48%) , pero con un <strong>COF historicamente bajo (3.10%).</strong></p></li>
 <li><p>Cuando el COF subio en 2024 (5.30%), la ROAA <strong>no superó el 1.36%</strong> a pesar de un NIM más alto (5.48%).</p></li>
 </ul>
+<p>Estos resultados historicos, evidencian que el comportamiento de la ROAA en la organización ha sido altamente sensible al COF.</p>
 </div><div class="column" style="font-size:15px">
-
+<p><img data-src="img/indicadores_promedio_2024.png"></p>
+<h4 id="observaciones-claves-1">Observaciones Claves:</h4>
+<ul>
+<li><p><strong>Banca de personas</strong> si bien tienen un NIM altísimo, también tiene el COC más alto.</p></li>
+<li><p><strong>La banca corporativa</strong> es más conservadora, con bajo riesgo, pero también tiene la menor rentabilidad.</p></li>
+</ul>
+<p>Estos contrastes muestran que <strong>la decisión de cómo componer el portafolio entre estas bancas no es trivial.</strong> Y eso es precisamente lo que el modelo que presento resuelve: Encontrar la combinación óptima que permite alcanzar el ROA objetivo bajo restricciones realistas.</p>
+</div></div>
+</section>
+<section id="planteamiento-formal-del-modelo" class="slide level2">
+<h2>Planteamiento Formal del modelo</h2>
+<div class="columns">
+<div class="column" style="font-size:15px">
+<p>Definamos las bancas como Corporativa: <span class="math inline">\(C\)</span>, Empresarial: <span class="math inline">\(E\)</span> y Personas: <span class="math inline">\(P\)</span>. Entonces, tenemos:</p>
+<p><strong>Función objetivo</strong></p>
+<p><span class="math display">\[
+\max ROAA = NIM_{tot} - COC_{tot} - COF_{tot}
+\]</span></p>
+<p><strong>Sujeto a:</strong></p>
+<ul>
+<li><p>Restricción de suma de participaciones: <span class="math display">\[w_C + w_E + w_P = 1\]</span></p></li>
+<li><p>Restricciones de acotación de indicadores: <span class="math display">\[5\% \leq NIM_{tot} \leq 15\%\]</span> <span class="math display">\[1\% \leq COC_{tot} \leq 6\%\]</span> <span class="math display">\[ROAA \geq ROAA_{objetivo}\]</span></p></li>
+</ul>
+<p>Donde, el calculo de los indicadores totales esta dado por:<br>
+</p>
+<p><span class="math display">\[
+NIM_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot NIM_s
+\]</span></p>
+<p><span class="math display">\[
+COC_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot COC_s
+\]</span></p>
+<p><span class="math display">\[
+COF_{tot} = \sum_{s\in \{C, E, P\}} w_s\cdot COF_s
+\]</span></p>
+</div><div class="column" style="font-size:15px">
+<p>Los rangos de acotación de los indicadores no son arbitrarios: fueron definidos a partir del análisis estadístico de la serie historica mensual del banco del 2024.</p>
+</div></div>
+</section>
+<section id="resultados-del-modelo-aplicado-a-3-escenarios" class="slide level2">
+<h2>Resultados del Modelo Aplicado a 3 escenarios</h2>
+<div class="columns">
+<div class="column" style="font-size:15px">
+<ul>
+<li><p><strong>Escenario 1 - COF 3.10%<br>
+<br>
+</strong><img data-src="img/escenario1.png" width="1800"><br>
+<br>
+Con una composición actual del portafolio (Corporativa 53%, Empresarial 7% y Personas 40%), el modelo muestra que se logra alcanzar una <span class="math inline">\(ROAA\geq 1.5\%\)</span> en múltiples combinaciones de NIM y COC, validando que con costos de fondeo controlados el objetivo de rentabilidad es factible.</p></li>
+<li><p><strong>Escenario 2 - COF 4.5%<br>
+<br>
+</strong><img data-src="img/escenario2.png"></p></li>
+</ul>
+</div><div class="column" style="font-size:15px">
+<p>Bajo las mismas participaciones del portafolio, la rentabilidad se reduce notablemente. Aquí todavía existen combinaciones que superar el 1.5% de ROAA, estas se restringen a zonas con alto NIM y bajo COC. Esto muestra que el margen de maniobra se estrecha y requiere monitoreo más precesio.</p>
+<ul>
+<li><strong>Escenario 3 - COF 5.3%<br>
+<br>
+</strong><img data-src="img/escenario3.png" width="1700"><br>
+<br>
+Con un fondeo elevado como el observado en 2024, el modelo indica que alcanzar 1.5% de ROAA es muy dificil con la composición actual del portafolio. Solo combinaciones muy exigentes de NIM y COC acotadas a la realidad del negocio lo permiten.</li>
+</ul>
+</div></div>
+</section>
+<section id="modelo-optimización-de-la-composición-óptima-del-portafolio." class="slide level2">
+<h2>Modelo optimización de la composición óptima del portafolio.</h2>
+<div class="columns">
+<div class="column" style="font-size:15px">
+<p>A diferencia del modelo previamente planteado, este busca encontrar los pesos óptimos <span class="math inline">\((w_C, w_E, w_P)\)</span> para las diferentes bancas, que permitan alcanzar exactamente una ROAA objetivo predeterminada.</p>
+<p>Función objetivo:</p>
+<p><span class="math display">\[
+\min_{w_C, w_E, w_P} |w_C\cdot ROAA_C + w_E\cdot ROAA_E + w_P\cdot ROAA_P - ROAA_{objetivo}|
+\]</span></p>
+<p>Sujeto a las siguientes restricciones:</p>
+<ol type="1">
+<li><p><span class="math inline">\(w_C + w_E + w_P = 1\)</span></p></li>
+<li><p><span class="math inline">\(ROAA_{tot} = w_C\cdot ROAA_{C} + w_E\cdot ROAA_{E} + w_P\cdot ROAA_P\)</span> con <span class="math inline">\(ROAA_{tot} \in [ROAA_{obj} - \epsilon, ROAA_{obj} + \epsilon]\)</span>.</p></li>
+<li><p><span class="math inline">\(w_P \geq w_E + 1\%\)</span></p></li>
+<li><p><span class="math inline">\(w_C \geq 10\%, w_E\geq 10\%, w_P\geq 10\%\)</span></p></li>
+</ol>
+<h4 id="resultados-del-modelo">Resultados del modelo</h4>
+<p><img data-src="img/esc_opt.png" width="960"></p>
+</div><div class="column" style="font-size:15px">
+<h4 id="cuál-tendría-que-ser-el-nim_tot-coc_tot-cof_tot-con-esta-combinación-óptima">¿Cuál tendría que ser el <span class="math inline">\(NIM_{tot}, COC_{tot}, COF_{tot}\)</span> con esta combinación óptima?</h4>
+<ul>
+<li><p><span class="math inline">\(NIM_{tot} = 5.41\%\)</span></p></li>
+<li><p><span class="math inline">\(COC_{tot} = 1.77\%\)</span></p></li>
+<li><p><span class="math inline">\(COF_{tot} = 2.14\%\)</span></p></li>
+</ul>
+<h4 id="conclusión">Conclusión:</h4>
+<p><br>
+<em>Podemos alcanzar la rentabilidad deseada, pero solo si el costo de fondeo se mantiene controlado. Si el COF sube a niveles actuales (5.30%), esta combinación ya no es viable.</em></p>
 </div></div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
